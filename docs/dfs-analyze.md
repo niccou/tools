@@ -6,7 +6,7 @@ nav_order: 4
 
 # dfs-analyze.ps1
 
-Détecte les cycles dans le graphe de dépendances entre projets en effectuant un parcours en profondeur (DFS — Depth-First Search) sur le fichier `all-edges.csv` généré par [`analyze-deps.ps1`](analyze-deps.md). Un cycle indique une dépendance circulaire, ce qui empêche la compilation et doit être résolu.
+Détecte les cycles dans le graphe de dépendances entre projets en effectuant un parcours en profondeur (DFS — Depth-First Search) sur le fichier `all-edges.csv` généré par [`analyze-deps.ps1`]({% link analyze-deps.md %}). Un cycle indique une dépendance circulaire, ce qui empêche la compilation et doit être résolu.
 
 ## Prérequis
 
