@@ -33,8 +33,8 @@ Analyse les dépendances entre projets `.csproj` d'une solution .NET. Il constru
 | Fichier                        | Description |
 |-------------------------------|-------------|
 | `all-edges.csv`               | Toutes les arêtes du graphe (`From`, `To`). Utilisé en entrée par `dangerous-analyze.ps1` et `dfs-analyze.ps1`. |
-| `top-hubs.csv`                | Top 500 projets par nombre de référenceurs (`ReferencedBy`). |
-| `top-callers.csv`             | Top 500 projets par nombre de références sortantes (`References`). |
+| `top-hubs.csv`                | Top 500 projets par nombre de référenceurs (`ReferencedBy`). Limité à 500 lignes en raison des contraintes de rendu de Mermaid. |
+| `top-callers.csv`             | Top 500 projets par nombre de références sortantes (`References`). Limité à 500 lignes en raison des contraintes de rendu de Mermaid. |
 | `deps-subgraph.md`            | Diagramme Mermaid du sous-graphe formé par les top hubs et top callers. |
 
 ## Exemples
