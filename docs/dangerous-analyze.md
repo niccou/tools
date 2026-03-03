@@ -16,18 +16,19 @@ Calcule un score de "dangerosité" pour chaque projet à partir du fichier `all-
 ## Utilisation
 
 ```powershell
-.\dangerous-analyze.ps1 [-CsvPath <string>]
+.\dangerous-analyze.ps1 [-CsvPath <string>] [-Top <int>]
 ```
 
-### Paramètre
+### Paramètres
 
 | Paramètre   | Type     | Défaut                          | Description |
 |-------------|----------|---------------------------------|-------------|
 | `-CsvPath`  | `string` | `.\deps-analysis\all-edges.csv` | Chemin vers le fichier CSV des arêtes généré par `analyze-deps.ps1`. |
+| `-Top`      | `int`    | `30`                            | Nombre de projets les plus risqués à afficher. |
 
 ## Sortie
 
-Le script affiche un tableau dans la console avec les colonnes suivantes, trié par `Score` décroissant :
+Le script affiche dans la console les **30 premiers projets** (configurable via `-Top`) triés par `Score` décroissant :
 
 | Colonne    | Description |
 |------------|-------------|
@@ -42,8 +43,11 @@ Le script affiche un tableau dans la console avec les colonnes suivantes, trié 
 # 1. Générer all-edges.csv
 .\analyze-deps.ps1
 
-# 2. Identifier les projets les plus risqués
+# 2. Identifier les projets les plus risqués (top 30 par défaut)
 .\dangerous-analyze.ps1
+
+# Afficher les 50 projets les plus risqués
+.\dangerous-analyze.ps1 -Top 50
 
 # Avec un dossier de sortie personnalisé
 .\analyze-deps.ps1 -OutDir "C:\output\deps"
