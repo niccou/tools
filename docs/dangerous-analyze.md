@@ -1,0 +1,54 @@
+# dangerous-analyze.ps1
+
+Calcule un score de "dangerosité" pour chaque projet à partir du fichier `all-edges.csv` généré par [`analyze-deps.ps1`](analyze-deps.md). Le score est la somme des dépendances entrantes et sortantes : plus un projet est central dans le graphe, plus il est risqué à modifier.
+
+## Prérequis
+
+- PowerShell 5.1 ou PowerShell 7+
+- Avoir préalablement exécuté `analyze-deps.ps1` afin de disposer du fichier `.\deps-analysis\all-edges.csv`
+
+## Utilisation
+
+```powershell
+.\dangerous-analyze.ps1
+```
+
+Le script ne prend pas de paramètre. Il lit directement `.\deps-analysis\all-edges.csv` et affiche les 30 projets les plus dangereux dans la console.
+
+## Sortie
+
+Le script affiche un tableau dans la console avec les colonnes suivantes, trié par `Score` décroissant :
+
+| Colonne    | Description |
+|------------|-------------|
+| `Project`  | Nom du projet. |
+| `Incoming` | Nombre de projets qui dépendent de ce projet (degré entrant). |
+| `Outgoing` | Nombre de projets dont ce projet dépend (degré sortant). |
+| `Score`    | `Incoming + Outgoing` — mesure globale de centralité. |
+
+## Exemple
+
+```powershell
+# 1. Générer all-edges.csv
+.\analyze-deps.ps1
+
+# 2. Identifier les projets les plus risqués
+.\dangerous-analyze.ps1
+```
+
+Exemple de sortie :
+
+```
+Project               Incoming Outgoing Score
+-------               -------- -------- -----
+MyApp.Core                  15        3    18
+MyApp.Infrastructure         8        6    14
+MyApp.Shared                12        1    13
+...
+```
+
+## Cas d'usage
+
+- Prioriser les revues de code sur les projets les plus couplés.
+- Identifier les candidats à la décomposition ou à l'isolation avant un refactoring.
+- Évaluer l'impact potentiel d'une modification avant de la réaliser.

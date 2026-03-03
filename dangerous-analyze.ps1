@@ -18,7 +18,7 @@ $result = foreach ($p in $projects) {
     Project = $p
     Incoming = if ($incoming.ContainsKey($p)) { $incoming[$p] } else { 0 }
     Outgoing = if ($outgoing.ContainsKey($p)) { $outgoing[$p] } else { 0 }
-    Score = ( ($incoming[$p] + $outgoing[$p]) )
+    Score = (if ($incoming.ContainsKey($p)) { $incoming[$p] } else { 0 }) + (if ($outgoing.ContainsKey($p)) { $outgoing[$p] } else { 0 })
   }
 }
 

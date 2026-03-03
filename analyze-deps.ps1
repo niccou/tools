@@ -27,7 +27,7 @@ foreach ($p in $csprojs) {
     try {
         [xml]$xml = Get-Content $p.FullName
     } catch  {
-        Write-Warning "Impossible de lire $(p.FullName)"
+        Write-Warning "Impossible de lire $($p.FullName)"
         continue
     }
 
@@ -86,7 +86,7 @@ $important = New-Object System.Collections.Generic.HashSet[string]
 $subEdges = $edges | Where-Object { $important.Contains($_.From) -and $important.Contains($_.To) } 
 
 function To-NodeId([string]$name){
-    return ($name -replace '[a-zA-Z0-9_]', '_')
+    return ($name -replace '[^a-zA-Z0-9_]', '_')
 }
 
 $lines = New-Object System.Collections.Generic.List[string]
