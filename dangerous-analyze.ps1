@@ -1,4 +1,8 @@
-$edges = Import-Csv ".\deps-analysis\all-edges.csv"
+param(
+  [string]$CsvPath = ".\deps-analysis\all-edges.csv"
+)
+
+$edges = Import-Csv $CsvPath
 
 $incoming = @{}
 $outgoing = @{}
@@ -14,11 +18,13 @@ foreach ($e in $edges) {
 $projects = ($incoming.Keys + $outgoing.Keys) | Sort-Object -Unique
 
 $result = foreach ($p in $projects) {
+  $inc = if ($incoming.ContainsKey($p)) { $incoming[$p] } else { 0 }
+  $out = if ($outgoing.ContainsKey($p)) { $outgoing[$p] } else { 0 }
   [PSCustomObject]@{
-    Project = $p
-    Incoming = if ($incoming.ContainsKey($p)) { $incoming[$p] } else { 0 }
-    Outgoing = if ($outgoing.ContainsKey($p)) { $outgoing[$p] } else { 0 }
-    Score = (if ($incoming.ContainsKey($p)) { $incoming[$p] } else { 0 }) + (if ($outgoing.ContainsKey($p)) { $outgoing[$p] } else { 0 })
+    Project  = $p
+    Incoming = $inc
+    Outgoing = $out
+    Score    = $inc + $out
   }
 }
 

@@ -1,3 +1,9 @@
+---
+layout: default
+title: analyze-deps.ps1
+nav_order: 2
+---
+
 # analyze-deps.ps1
 
 Analyse les dépendances entre projets `.csproj` d'une solution .NET. Il construit un graphe orienté des références entre projets, calcule les hubs (projets les plus référencés) et les appelants (projets qui référencent le plus d'autres projets), exporte les résultats en CSV et génère un diagramme Mermaid.
@@ -27,8 +33,8 @@ Analyse les dépendances entre projets `.csproj` d'une solution .NET. Il constru
 | Fichier                        | Description |
 |-------------------------------|-------------|
 | `all-edges.csv`               | Toutes les arêtes du graphe (`From`, `To`). Utilisé en entrée par `dangerous-analyze.ps1` et `dfs-analyze.ps1`. |
-| `top-hubs.csv`                | Classement de tous les projets par nombre de référenceurs (`ReferencedBy`). |
-| `top-callers.csv`             | Classement de tous les projets par nombre de références sortantes (`References`). |
+| `top-hubs.csv`                | Top 500 projets par nombre de référenceurs (`ReferencedBy`). |
+| `top-callers.csv`             | Top 500 projets par nombre de références sortantes (`References`). |
 | `deps-subgraph.md`            | Diagramme Mermaid du sous-graphe formé par les top hubs et top callers. |
 
 ## Exemples
