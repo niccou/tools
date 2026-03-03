@@ -2,6 +2,8 @@
 
 Scripts PowerShell d'analyse des dépendances entre projets .NET (`.csproj`).
 
+📖 **[Documentation complète sur GitHub Pages](https://niccou.github.io/tools)**
+
 ## Scripts
 
 | Script | Description |
@@ -23,6 +25,15 @@ Depuis la racine de votre solution .NET :
 
 # 3. Détecter les cycles de dépendances
 .\dfs-analyze.ps1
+```
+
+Avec un dossier de sortie personnalisé sur toute la chaîne :
+
+```powershell
+$out = "C:\output\deps"
+.\analyze-deps.ps1 -OutDir $out
+.\dangerous-analyze.ps1 -CsvPath "$out\all-edges.csv"
+.\dfs-analyze.ps1 -CsvPath "$out\all-edges.csv"
 ```
 
 ## Documentation
