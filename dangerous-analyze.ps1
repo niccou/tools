@@ -1,7 +1,13 @@
 param(
+  [ValidateNotNullOrEmpty()]
   [string]$CsvPath = ".\deps-analysis\all-edges.csv",
+  [ValidateRange(1, [int]::MaxValue)]
   [int]$Top = 30
 )
+
+if (-not (Test-Path -LiteralPath $CsvPath)) {
+  throw "CSV path '$CsvPath' does not exist or is not accessible."
+}
 
 $edges = Import-Csv $CsvPath
 
