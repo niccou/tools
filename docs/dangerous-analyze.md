@@ -6,7 +6,7 @@ nav_order: 3
 
 # dangerous-analyze.ps1
 
-Calcule un score de "dangerosité" pour chaque projet à partir du fichier `all-edges.csv` généré par [`analyze-deps.ps1`](analyze-deps.md). Le score est la somme des dépendances entrantes et sortantes : plus un projet est central dans le graphe, plus il est risqué à modifier.
+Calcule un score de "dangerosité" pour chaque projet à partir du fichier `all-edges.csv` généré par [`analyze-deps.ps1`]({% link analyze-deps.md %}). Le score est la somme des dépendances entrantes et sortantes : plus un projet est central dans le graphe, plus il est risqué à modifier.
 
 ## Prérequis
 
