@@ -12,9 +12,9 @@ Scripts PowerShell pour analyser, visualiser et auditer les dépendances entre p
 
 | Script | Description |
 |--------|-------------|
-| [`analyze-deps.ps1`](analyze-deps) | Construit le graphe de dépendances, calcule hubs et appelants, exporte des CSV et génère un diagramme Mermaid. **Point d'entrée — à lancer en premier.** |
-| [`dangerous-analyze.ps1`](dangerous-analyze) | Score chaque projet selon sa centralité (`Incoming + Outgoing`) pour identifier les modules les plus risqués à modifier. |
-| [`dfs-analyze.ps1`](dfs-analyze) | Détecte les dépendances circulaires entre projets via un parcours en profondeur (DFS). |
+| [`analyze-deps.ps1`]({% link analyze-deps.md %}) | Construit le graphe de dépendances, calcule hubs et appelants, exporte des CSV et génère un diagramme Mermaid. **Point d'entrée — à lancer en premier.** |
+| [`dangerous-analyze.ps1`]({% link dangerous-analyze.md %}) | Score chaque projet selon sa centralité (`Incoming + Outgoing`) pour identifier les modules les plus risqués à modifier. |
+| [`dfs-analyze.ps1`]({% link dfs-analyze.md %}) | Détecte les dépendances circulaires entre projets via un parcours en profondeur (DFS). |
 
 ## Démarrage rapide
 
