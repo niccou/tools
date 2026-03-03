@@ -1,5 +1,6 @@
 param(
-  [string]$CsvPath = ".\deps-analysis\all-edges.csv"
+  [string]$CsvPath = ".\deps-analysis\all-edges.csv",
+  [int]$Top = 30
 )
 
 $edges = Import-Csv $CsvPath
@@ -28,4 +29,4 @@ $result = foreach ($p in $projects) {
   }
 }
 
-$result | Sort-Object Score -Descending | Select-Object -First 30
+$result | Sort-Object Score -Descending | Select-Object -First $Top
